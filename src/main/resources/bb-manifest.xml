@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<manifest>
+    <!-- core extension information -->
+    <plugin>
+        <name value="0-Sample LTI Application"/>
+        <handle value="${b2.handle}"/>
+        <description value=""/>
+        <version value="${project.version}"/>
+        <webapp-type value="javaext"/>
+
+        <requires>
+            <bbversion value="9.1"/>
+        </requires>
+
+        <vendor>
+            <id value="${b2.vendor}"/>
+            <name value="XYZ Company"/>
+            <url value="http://www.mycompany.com/"/>
+            <description value=""/>
+        </vendor>
+
+        <http-actions>
+            <config value="app/admin/settings"/>
+        </http-actions>
+
+        <schema-dirs>
+        </schema-dirs>
+
+        <extension-defs>
+        </extension-defs>
+
+        <!-- Tools defined by this extension -->
+        <application-defs>
+        </application-defs>
+
+        <module-defs>
+        </module-defs>
+
+        <!-- code permissions required for proper operation -->
+        <permissions>
+            <!--  Needed for Spring auto-wiring feature -->
+            <permission type="runtime" name="getClassLoader"/>
+            <permission type="runtime" name="createClassLoader"/>
+            <permission type="runtime" name="getProtectionDomain"/>
+            <permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks"/>
+
+            <!--  Needed to connect to the DB -->
+            <permission type="java.net.SocketPermission" name="*"
+                        actions="connect,resolve"/>
+            <permission type="blackboard.data.AttributePermission" name="user.authinfo"
+                        actions="get"/>
+
+            <permission type="attribute" name="user.cardnumber"
+                        actions="get,set"/>
+            <permission type="attribute" name="user.authinfo" actions="get,set"/>
+            <permission type="attribute" name="user.personalinfo"
+                        actions="get,set"/>
+
+        </permissions>
+
+    </plugin>
+</manifest>
